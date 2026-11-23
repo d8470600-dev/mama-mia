@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Продукты для мамы 🛒</title>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#d94f70">
 <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -389,5 +391,13 @@
     window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
   });
 </script>
-</body>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js');
+    });
+  }
+</script>
+</body> 
 </html>
+
