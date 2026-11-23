@@ -16,232 +16,68 @@
     --muted:#8a7a80;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{
-    font-family:'Montserrat',sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.6;
-    padding-bottom:90px;
-  }
-
-  .hero{
-    text-align:center;
-    padding:70px 20px 50px;
-    background:linear-gradient(160deg,#fbe3ea 0%,#fdf6f0 70%);
-    position:relative;
-    overflow:hidden;
-  }
-  .hero::after{
-    content:"🛒";
-    position:absolute;
-    font-size:140px;
-    opacity:.10;
-    right:0;
-    bottom:-30px;
-  }
-  .hero h1{
-    font-family:'Marck Script',cursive;
-    font-size:clamp(38px,7vw,68px);
-    color:var(--accent);
-    font-weight:400;
-  }
-  .hero p{
-    max-width:560px;
-    margin:14px auto 0;
-    color:var(--muted);
-    font-size:16px;
-    font-weight:300;
-  }
-
+  body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding-bottom:90px;}
+  .hero{text-align:center;padding:70px 20px 50px;background:linear-gradient(160deg,#fbe3ea 0%,#fdf6f0 70%);position:relative;overflow:hidden;}
+  .hero::after{content:"🛒";position:absolute;font-size:140px;opacity:.10;right:0;bottom:-30px;}
+  .hero h1{font-family:'Marck Script',cursive;font-size:clamp(38px,7vw,68px);color:var(--accent);font-weight:400;}
+  .hero p{max-width:560px;margin:14px auto 0;color:var(--muted);font-size:16px;font-weight:300;}
+  .tracker-btn {display: inline-block;margin-top: 20px;background: #fff;color: var(--accent);padding: 10px 20px;border-radius: 999px;text-decoration: none;font-size: 14px;font-weight: 600;box-shadow: 0 4px 12px rgba(217,79,112,.15);transition: .2s;}
+  .tracker-btn:hover { background: var(--accent); color: #fff; }
   .wrap{max-width:1120px;margin:0 auto;padding:0 20px 40px;}
-
-  .cat-nav{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    justify-content:center;
-    margin:30px 0 10px;
-    position:sticky;
-    top:0;
-    background:var(--bg);
-    padding:14px 0;
-    z-index:10;
-    border-bottom:1px solid #f5e4e9;
-  }
-  .cat-nav a{
-    text-decoration:none;
-    font-size:12.5px;
-    font-weight:600;
-    color:var(--accent);
-    background:var(--accent-soft);
-    padding:7px 14px;
-    border-radius:999px;
-    transition:.2s;
-    white-space:nowrap;
-  }
+  .cat-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:30px 0 10px;position:sticky;top:0;background:var(--bg);padding:14px 0;z-index:10;border-bottom:1px solid #f5e4e9;}
+  .cat-nav a{text-decoration:none;font-size:12.5px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:7px 14px;border-radius:999px;transition:.2s;white-space:nowrap;}
   .cat-nav a:hover{background:var(--accent);color:#fff;}
-
-  .section-title{
-    font-size:22px;
-    color:var(--accent);
-    margin:44px 0 6px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
+  .section-title{font-size:22px;color:var(--accent);margin:44px 0 6px;display:flex;align-items:center;gap:10px;}
   .section-title .emoji{font-size:26px;}
-  .section-desc{
-    font-size:14px;
-    color:var(--muted);
-    font-weight:300;
-    margin-bottom:20px;
-    max-width:640px;
-  }
-
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:18px;
-  }
-
-  .card{
-    background:var(--card);
-    border-radius:18px;
-    padding:20px 18px 18px;
-    box-shadow:0 6px 24px rgba(217,79,112,.07);
-    border:1px solid #f5e4e9;
-    display:flex;
-    flex-direction:column;
-    transition:transform .2s, box-shadow .2s;
-  }
+  .section-desc{font-size:14px;color:var(--muted);font-weight:300;margin-bottom:20px;max-width:640px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;}
+  .card{background:var(--card);border-radius:18px;padding:20px 18px 18px;box-shadow:0 6px 24px rgba(217,79,112,.07);border:1px solid #f5e4e9;display:flex;flex-direction:column;transition:transform .2s, box-shadow .2s;}
   .card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(217,79,112,.14);}
   .card .icon{font-size:32px;margin-bottom:8px;}
   .card h3{font-size:15.5px;margin-bottom:5px;color:var(--text);}
   .card p{font-size:12.5px;color:var(--muted);font-weight:300;flex:1;margin-bottom:12px;min-height:38px;}
-  .card .price{
-    font-size:15px;
-    font-weight:700;
-    color:var(--accent);
-    margin-bottom:10px;
-  }
-  .btn-add{
-    border:none;
-    background:var(--accent);
-    color:#fff;
-    font-family:inherit;
-    font-size:13.5px;
-    font-weight:600;
-    padding:9px 14px;
-    border-radius:11px;
-    cursor:pointer;
-    transition:.2s;
-  }
+  .card .price{font-size:15px;font-weight:700;color:var(--accent);margin-bottom:10px;}
+  .btn-add{border:none;background:var(--accent);color:#fff;font-family:inherit;font-size:13.5px;font-weight:600;padding:9px 14px;border-radius:11px;cursor:pointer;transition:.2s;}
   .btn-add:hover{background:#c23d5e;}
   .btn-add.added{background:var(--green);}
-
-  .cart-bar{
-    position:fixed;
-    left:0;right:0;bottom:0;
-    background:#fff;
-    border-top:1px solid #f5e4e9;
-    box-shadow:0 -6px 24px rgba(217,79,112,.10);
-    padding:14px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:14px;
-    z-index:100;
-  }
+  .cart-bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #f5e4e9;box-shadow:0 -6px 24px rgba(217,79,112,.10);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;z-index:100;}
   .cart-bar .info{font-size:14px;}
   .cart-bar .info strong{color:var(--accent);font-size:16px;}
-  .btn-order{
-    border:none;
-    background:var(--accent);
-    color:#fff;
-    font-family:inherit;
-    font-size:15px;
-    font-weight:600;
-    padding:12px 26px;
-    border-radius:12px;
-    cursor:pointer;
-    transition:.2s;
-  }
+  .btn-order{border:none;background:var(--accent);color:#fff;font-family:inherit;font-size:15px;font-weight:600;padding:12px 26px;border-radius:12px;cursor:pointer;transition:.2s;}
   .btn-order:hover{background:#c23d5e;}
   .btn-order:disabled{background:#e5c6ce;cursor:not-allowed;}
-
-  .modal-overlay{
-    display:none;
-    position:fixed;inset:0;
-    background:rgba(58,46,51,.45);
-    z-index:200;
-    align-items:center;justify-content:center;
-    padding:20px;
-  }
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(58,46,51,.45);z-index:200;align-items:center;justify-content:center;padding:20px;}
   .modal-overlay.open{display:flex;}
-  .modal{
-    background:#fff;
-    border-radius:22px;
-    max-width:460px;width:100%;
-    padding:30px 26px;
-    max-height:85vh;overflow-y:auto;
-  }
+  .modal{background:#fff;border-radius:22px;max-width:460px;width:100%;padding:30px 26px;max-height:85vh;overflow-y:auto;}
   .modal h3{color:var(--accent);margin-bottom:16px;font-size:22px;}
   .modal ul{list-style:none;margin-bottom:18px;}
-  .modal li{
-    display:flex;justify-content:space-between;align-items:center;
-    font-size:14px;padding:8px 0;
-    border-bottom:1px dashed #f0dbe2;
-  }
-  .modal li span:last-child{font-weight:600;color:var(--accent); display:flex; align-items:center;}
-  .modal .total{
-    display:flex;justify-content:space-between;
-    font-weight:700;font-size:16px;
-    margin:14px 0 20px;
-  }
-  .modal input{
-    width:100%;font-family:inherit;font-size:14px;
-    padding:11px 14px;border:1px solid #f0dbe2;
-    border-radius:10px;margin-bottom:12px;outline:none;
-  }
-  .modal input:focus{border-color:var(--accent);}
+  .modal li{display:flex;justify-content:space-between;align-items:center;font-size:14px;padding:8px 0;border-bottom:1px dashed #f0dbe2;}
+  .modal li span:last-child{font-weight:600;color:var(--accent);display:flex;align-items:center;}
+  .modal .total{display:flex;justify-content:space-between;font-weight:700;font-size:16px;margin:14px 0 20px;}
+  .input-group { position: relative; margin-bottom:12px; }
+  .input-group input {width:100%;font-family:inherit;font-size:14px;padding:11px 14px;border:1px solid #f0dbe2;border-radius:10px;outline:none;}
+  .input-group input:focus{border-color:var(--accent);}
+  .btn-loc {position: absolute; right: 8px; top: 8px; bottom: 8px;background: var(--accent-soft); color: var(--accent); border: none;border-radius: 8px; padding: 0 10px; font-weight: 600; font-size: 12px;cursor: pointer; transition: .2s;}
+  .btn-loc:hover { background: var(--accent); color: #fff; }
   .modal-buttons{display:flex;gap:10px;}
-  .modal-buttons button{
-    flex:1;font-family:inherit;font-size:14px;font-weight:600;
-    padding:12px;border-radius:11px;cursor:pointer;border:none;transition:.2s;
-  }
+  .modal-buttons button{flex:1;font-family:inherit;font-size:14px;font-weight:600;padding:12px;border-radius:11px;cursor:pointer;border:none;transition:.2s;}
   .btn-cancel{background:#f0dbe2;color:var(--text);}
   .btn-confirm{background:var(--accent);color:#fff;}
   .btn-confirm:hover{background:#c23d5e;}
-
   footer{text-align:center;padding:30px 20px 10px;color:var(--muted);font-size:13px;}
 </style>
 </head>
 <body>
-
 <header class="hero">
   <h1>Заказ продуктов</h1>
   <p>Всё, что нужно маме — по категориям, с описанием и ценами. Отметь товары и оформи заказ в один клик.</p>
+  <a href="tracker.html" class="tracker-btn">📍 Я курьер (отслеживание)</a>
 </header>
-
 <main class="wrap">
-
   <nav class="cat-nav">
-    <a href="#fruits">🍎 Фрукты</a>
-    <a href="#veg">🥦 Овощи</a>
-    <a href="#dairy">🥛 Молочка</a>
-    <a href="#meat">🍗 Мясо</a>
-    <a href="#fish">🐟 Рыба</a>
-    <a href="#bakery">🍞 Хлеб</a>
-    <a href="#grocery">🥫 Бакалея</a>
-    <a href="#sweets">🍯 Сладкое</a>
-    <a href="#drinks">🥤 Напитки</a>
+    <a href="#fruits">🍎 Фрукты</a><a href="#veg">🥦 Овощи</a><a href="#dairy">🥛 Молочка</a><a href="#meat">🍗 Мясо</a><a href="#fish">🐟 Рыба</a><a href="#bakery">🍞 Хлеб</a><a href="#grocery">🥫 Бакалея</a><a href="#sweets">🍯 Сладкое</a><a href="#drinks">🥤 Напитки</a>
   </nav>
-
-  <!-- ФРУКТЫ -->
-  <section id="fruits">
-    <h2 class="section-title"><span class="emoji">🍎</span> Свежие фрукты и ягоды</h2>
-    <p class="section-desc">Сочные, спелые, сезонные — соберём для мамы лучшие витамины. Цена за 1 кг, если не указано иное.</p>
-    <div class="grid">
+  <section id="fruits"><h2 class="section-title"><span class="emoji">🍎</span> Свежие фрукты и ягоды</h2><p class="section-desc">Сочные, спелые, сезонные — соберём для мамы лучшие витамины. Цена за 1 кг, если не указано иное.</p><div class="grid">
       <div class="card"><span class="icon">🍎</span><h3>Яблоки</h3><p>Красные, сладкие, хрустящие — идеальны для пирога и к чаю.</p><div class="price">120 ₽ / кг</div><button class="btn-add" data-name="Яблоки" data-price="120">Добавить</button></div>
       <div class="card"><span class="icon">🍌</span><h3>Бананы</h3><p>Спелые, ароматные — для завтрака и перекуса.</p><div class="price">90 ₽ / кг</div><button class="btn-add" data-name="Бананы" data-price="90">Добавить</button></div>
       <div class="card"><span class="icon">🍇</span><h3>Виноград</h3><p>Сладкий кишмиш без косточек — любимое лакомство.</p><div class="price">180 ₽ / кг</div><button class="btn-add" data-name="Виноград" data-price="180">Добавить</button></div>
@@ -250,249 +86,11 @@
       <div class="card"><span class="icon">🍓</span><h3>Клубника</h3><p>Сладкая, ароматная — для десерта и просто так.</p><div class="price">320 ₽ / кг</div><button class="btn-add" data-name="Клубника" data-price="320">Добавить</button></div>
       <div class="card"><span class="icon">🍋</span><h3>Лимоны</h3><p>Сочные — к чаю и для выпечки. Цена за 3 шт.</p><div class="price">90 ₽ / 3 шт</div><button class="btn-add" data-name="Лимоны" data-price="90">Добавить</button></div>
       <div class="card"><span class="icon">🥝</span><h3>Киви</h3><p>Нежные, кисло-сладкие — кладезь витаминов.</p><div class="price">190 ₽ / кг</div><button class="btn-add" data-name="Киви" data-price="190">Добавить</button></div>
-    </div>
-  </section>
-
-  <!-- ОВОЩИ -->
-  <section id="veg">
-    <h2 class="section-title"><span class="emoji">🥦</span> Овощи и зелень</h2>
-    <p class="section-desc">Всё для борща, салата и любимых маминых блюд. Свежее с рынка.</p>
-    <div class="grid">
+  </div></section>
+  <section id="veg"><h2 class="section-title"><span class="emoji">🥦</span> Овощи и зелень</h2><p class="section-desc">Всё для борща, салата и любимых маминых блюд. Свежее с рынка.</p><div class="grid">
       <div class="card"><span class="icon">🍅</span><h3>Помидоры</h3><p>Мясистые, сладкие — для салата и соусов.</p><div class="price">140 ₽ / кг</div><button class="btn-add" data-name="Помидоры" data-price="140">Добавить</button></div>
       <div class="card"><span class="icon">🥒</span><h3>Огурцы</h3><p>Хрустящие, свежие — в салат или с солью.</p><div class="price">100 ₽ / кг</div><button class="btn-add" data-name="Огурцы" data-price="100">Добавить</button></div>
       <div class="card"><span class="icon">🥕</span><h3>Морковь</h3><p>Сладкая, сочная — для супа, рагу и салата.</p><div class="price">60 ₽ / кг</div><button class="btn-add" data-name="Морковь" data-price="60">Добавить</button></div>
       <div class="card"><span class="icon">🥔</span><h3>Картофель</h3><p>Молодой, рассыпчатый — для пюре и жарки.</p><div class="price">55 ₽ / кг</div><button class="btn-add" data-name="Картофель" data-price="55">Добавить</button></div>
       <div class="card"><span class="icon">🧅</span><h3>Лук</h3><p>Репчатый, острый — основа любого блюда.</p><div class="price">45 ₽ / кг</div><button class="btn-add" data-name="Лук" data-price="45">Добавить</button></div>
-      <div class="card"><span class="icon">🫑</span><h3>Перец болгарский</h3><p>Сочный, сладкий — для лечо и салатов.</p><div class="price">180 ₽ / кг</div><button class="btn-add" data-name="Перец болгарский" data-price="180">Добавить</button></div>
-      <div class="card"><span class="icon">🥬</span><h3>Капуста</h3><p>Хрустящая — для борща, салата и голубцов.</p><div class="price">50 ₽ / кг</div><button class="btn-add" data-name="Капуста" data-price="50">Добавить</button></div>
-      <div class="card"><span class="icon">🌿</span><h3>Зелень (пучок)</h3><p>Укроп, петрушка, кинза — свежие, ароматные.</p><div class="price">40 ₽ / пучок</div><button class="btn-add" data-name="Зелень" data-price="40">Добавить</button></div>
-      <div class="card"><span class="icon">🧄</span><h3>Чеснок</h3><p>Ароматный, острый — для заправки и солений.</p><div class="price">60 ₽ / 200 г</div><button class="btn-add" data-name="Чеснок" data-price="60">Добавить</button></div>
-    </div>
-  </section>
-
-  <!-- МОЛОЧКА -->
-  <section id="dairy">
-    <h2 class="section-title"><span class="emoji">🥛</span> Молочные продукты</h2>
-    <p class="section-desc">Свежие каждый день: молоко, сыр, творог — всё натуральное.</p>
-    <div class="grid">
-      <div class="card"><span class="icon">🥛</span><h3>Молоко</h3><p>Цельное, жирное, деревенское — 1 литр.</p><div class="price">80 ₽ / л</div><button class="btn-add" data-name="Молоко" data-price="80">Добавить</button></div>
-      <div class="card"><span class="icon">🧀</span><h3>Творог</h3><p>Домашний, нежный, 9% — для запеканки и сырников.</p><div class="price">150 ₽ / 500 г</div><button class="btn-add" data-name="Творог" data-price="150">Добавить</button></div>
-      <div class="card"><span class="icon">🧀</span><h3>Сыр</h3><p>Полутвёрдый, с ореховым вкусом — к завтраку.</p><div class="price">280 ₽ / 300 г</div><button class="btn-add" data-name="Сыр" data-price="280">Добавить</button></div>
-      <div class="card"><span class="icon">🥚</span><h3>Яйца</h3><p>Деревенские, крупные — десяток.</p><div class="price">120 ₽ / 10 шт</div><button class="btn-add" data-name="Яйца" data-price="120">Добавить</button></div>
-      <div class="card"><span class="icon">🧈</span><h3>Масло сливочное</h3><p>Натуральное, 82,5% — для бутербродов и выпечки.</p><div class="price">220 ₽ / 200 г</div><button class="btn-add" data-name="Масло сливочное" data-price="220">Добавить</button></div>
-      <div class="card"><span class="icon">🥛</span><h3>Сметана</h3><p>Густая, 20% — к борщу и вареникам.</p><div class="price">160 ₽ / 400 г</div><button class="btn-add" data-name="Сметана" data-price="160">Добавить</button></div>
-      <div class="card"><span class="icon">🥛</span><h3>Кефир</h3><p>Свежий, 1% — для лёгкого ужина и окрошки.</p><div class="price">90 ₽ / л</div><button class="btn-add" data-name="Кефир" data-price="90">Добавить</button></div>
-    </div>
-  </section>
-
-  <!-- МЯСО -->
-  <section id="meat">
-    <h2 class="section-title"><span class="emoji">🍗</span> Мясо и птица</h2>
-    <p class="section-desc">Свежее мясо от проверенного поставщика — для котлет, бульона и праздничного стола.</p>
-    <div class="grid">
-      <div class="card"><span class="icon">🍗</span><h3>Куриная грудка</h3><p>Нежная, без кожи — для диетического ужина.</p><div class="price">320 ₽ / кг</div><button class="btn-add" data-name="Куриная грудка" data-price="320">Добавить</button></div>
-      <div class="card"><span class="icon">🍗</span><h3>Куриные бёдра</h3><p>Сочные, ароматные — для запекания и рагу.</p><div class="price">270 ₽ / кг</div><button class="btn-add" data-name="Куриные бёдра" data-price="270">Добавить</button></div>
-      <div class="card"><span class="icon">🥩</span><h3>Говядина</h3><p>Мякоть для тушения и бульона — насыщенный вкус.</p><div class="price">550 ₽ / кг</div><button class="btn-add" data-name="Говядина" data-price="550">Добавить</button></div>
-      <div class="card"><span class="icon">🥩</span><h3>Свинина</h3><p>Шейка — для шашлыка и запекания.</p><div class="price">420 ₽ / кг</div><button class="btn-add" data-name="Свинина" data-price="420">Добавить</button></div>
-      <div class="card"><span class="icon">🥓</span><h3>Фарш домашний</h3><p>Говядина + свинина — для котлет и тефтелей.</p><div class="price">380 ₽ / кг</div><button class="btn-add" data-name="Фарш домашний" data-price="380">Добавить</button></div>
-      <div class="card"><span class="icon">🌭</span><h3>Сосиски</h3><p>Молочные, натуральные — к завтраку.</p><div class="price">260 ₽ / 400 г</div><button class="btn-add" data-name="Сосиски" data-price="260">Добавить</button></div>
-    </div>
-  </section>
-
-  <!-- РЫБА -->
-  <section id="fish">
-    <h2 class="section-title"><span class="emoji">🐟</span> Рыба и морепродукты</h2>
-    <p class="section-desc">Свежая и замороженная рыба — источник омега-3 и хорошего настроения.</p>
-    <div class="grid">
-      <div class="card"><span class="icon">🐟</span><h3>Лосось</h3><p>Стейк, охлаждённый — для запекания и гриля.</p><div class="price">780 ₽ / кг</div><button class="btn-add" data-name="Лосось" data-price="780">Добавить</button></div>
-      <div class="card"><span class="icon">🐟</span><h3>Треска</h3><p>Филе без костей — нежное, диетическое.</p><div class="price">420 ₽ / кг</div><button class="btn-add" data-name="Треска" data-price="420">Добавить</button></div>
-      <div class="card"><span class="icon">🐟</span><h3>Сельдь</h3><p>Слабосолёная — к картошечке и луку.</p><div class="price">230 ₽ / шт</div><button class="btn-add" data-name="Сельдь" data-price="230">Добавить</button></div>
-      <div class="card"><span class="icon">🦐</span><h3>Креветки</h3><p>Крупные, очищенные — для салата и пасты.</p><div class="price">560 ₽ / 500 г</div><button class="btn-add" data-name="Креветки" data-price="560">Добавить</button></div>
-    </div>
-  </section>
-
-  <!-- ХЛЕБ -->
-  <section id="bakery">
-    <h2 class="section-title"><span class="emoji">🍞</span> Хлеб и выпечка</h2>
-    <p class="section-desc">Свежий хлеб каждое утро — от багета до домашнего пирога.</p>
-    <div class="grid">
-      <div class="card"><span class="icon">🍞</span><h3>Хлеб белый</h3><p>Мягкий, воздушный — классика к завтраку.</p><div class="price">45 ₽ / шт</div><button class="btn-add" data-name="Хлеб белый" data-price="45">Добавить</button></div>
-      <div class="card"><span class="icon">🥖</span><h3>Багет</h3><p>Хрустящая корочка, нежный мякиш — к сыру и супу.</p><div class="price">70 ₽ / шт</div><button class="btn-add" data-name="Багет" data-price="70">Добавить</button></div>
-      <div class="card"><span class="icon">🍞</span><h3>Хлеб чёрный</h3><p>Ржаной, с тмином — для тостов и бутербродов.</p><div class="price">55 ₽ / шт</div><button class="btn-add" data-name="Хлеб чёрный" data-price="55">Добавить</button></div>
-      <div class="card"><span class="icon">🥐</span><h3>Круассаны</h3><p>Сливочные, слоёные — к утреннему кофе. 2 шт.</p><div class="price">120 ₽ / 2 шт</div><button class="btn-add" data-name="Круассаны" data-price="120">Добавить</button></div>
-      <div class="card"><span class="icon">🥨</span><h3>Булочки</h3><p>Сдобные, с маком — для домашнего чаепития.</p><div class="price">80 ₽ / 4 шт</div><button class="btn-add" data-name="Булочки" data-price="80">Добавить</button></div>
-    </div>
-  </section>
-
-  <!-- БАКАЛЕЯ -->
-  <section id="grocery">
-    <h2 class="section-title"><span class="emoji">🥫</span> Бакалея и крупы</h2>
-    <p class="section-desc">Всё для кладовой: крупы, макароны, масло, специи — чтобы всегда было под рукой.</p>
-    <div class="grid">
-      <div class="card"><span class="icon">🍚</span><h3>Рис</h3><p>Длиннозёрный, пропаренный — рассыпчатый гарнир.</p><div class="price">110 ₽ / кг</div><button class="btn-add" data-name="Рис" data-price="110">Добавить</button></div>
-      <div class="card"><span class="icon">🌾</span><h3>Гречка</h3><p>Ядрица, отборная — для каши и гарнира.</p><div class="price">95 ₽ / кг</div><button class="btn-add" data-name="Гречка" data-price="95">Добавить</button></div>
-      <div class="card"><span class="icon">🍝</span><h3>Макароны</h3><p>Из твёрдых сортов — спагетти, 500 г.</p><div class="price">130 ₽ / 500 г</div><button class="btn-add" data-name="Макароны" data-price="130">Добавить</button></div>
-      <div class="card"><span class="icon">🌻</span><h3>Масло растительное</h3><p>Подсолнечное, рафинированное — 1 л.</p><div class="price">150 ₽ / л</div><button class="btn-add" data-name="Масло растительное" data-price="150">Добавить</button></div>
-      <div class="card"><span class="icon">🍚</span><h3>Мука</h3><p>Пшеничная, в/с — для выпечки и блинов. 2 кг.</p><div class="price">140 ₽ / 2 кг</div><button class="btn-add" data-name="Мука" data-price="140">Добавить</button></div>
-      <div class="card"><span class="icon">🧂</span><h3>Соль</h3><p>Поваренная, помол №1 — 1 кг.</p><div class="price">30 ₽ / кг</div><button class="btn-add" data-name="Соль" data-price="30">Добавить</button></div>
-      <div class="card"><span class="icon">🍬</span><h3>Сахар</h3><p>Белый, песок — для выпечки и чая. 1 кг.</p><div class="price">85 ₽ / кг</div><button class="btn-add" data-name="Сахар" data-price="85">Добавить</button></div>
-      <div class="card"><span class="icon">🫘</span><h3>Фасоль</h3><p>Красная, сухая — для супа и салата.</p><div class="price">120 ₽ / 500 г</div><button class="btn-add" data-name="Фасоль" data-price="120">Добавить</button></div>
-    </div>
-  </section>
-
-  <!-- СЛАДКОЕ -->
-  <section id="sweets">
-    <h2 class="section-title"><span class="emoji">🍯</span> Сладкое и чай</h2>
-    <p class="section-desc">Маленькие радости к чаю — мёд, печенье, шоколад и любимый чай.</p>
-    <div class="grid">
-      <div class="card"><span class="icon">🍯</span><h3>Мёд</h3><p>Цветочный, натуральный — к чаю и для иммунитета. 500 г.</p><div class="price">350 ₽ / 500 г</div><button class="btn-add" data-name="Мёд" data-price="350">Добавить</button></div>
-      <div class="card"><span class="icon">🍫</span><h3>Шоколад</h3><p>Тёмный, 70% какао — горьковатый, к кофе.</p><div class="price">120 ₽ / шт</div><button class="btn-add" data-name="Шоколад" data-price="120">Добавить</button></div>
-      <div class="card"><span class="icon">🍪</span><h3>Печенье овсяное</h3><p>Домашнее, с изюмом — к вечернему чаю.</p><div class="price">150 ₽ / 300 г</div><button class="btn-add" data-name="Печенье овсяное" data-price="150">Добавить</button></div>
-      <div class="card"><span class="icon">🍬</span><h3>Конфеты</h3><p>Шоколадные ассорти — для гостей и внуков.</p><div class="price">280 ₽ / 400 г</div><button class="btn-add" data-name="Конфеты" data-price="280">Добавить</button></div>
-      <div class="card"><span class="icon">🍵</span><h3>Чай чёрный</h3><p>Крупнолистовой, цейлонский — 100 г.</p><div class="price">180 ₽ / 100 г</div><button class="btn-add" data-name="Чай чёрный" data-price="180">Добавить</button></div>
-      <div class="card"><span class="icon">🌿</span><h3>Чай травяной</h3><p>Мята, чабрец, липа — для успокоения. 50 г.</p><div class="price">160 ₽ / 50 г</div><button class="btn-add" data-name="Чай травяной" data-price="160">Добавить</button></div>
-    </div>
-  </section>
-
-  <!-- НАПИТКИ -->
-  <section id="drinks">
-    <h2 class="section-title"><span class="emoji">🥤</span> Напитки</h2>
-    <p class="section-desc">Соки, вода, компот — чтобы в доме всегда было что попить.</p>
-    <div class="grid">
-      <div class="card"><span class="icon">💧</span><h3>Вода питьевая</h3><p>Без газа, 5 литров — для чая и готовки.</p><div class="price">90 ₽ / 5 л</div><button class="btn-add" data-name="Вода питьевая" data-price="90">Добавить</button></div>
-      <div class="card"><span class="icon">🧃</span><h3>Сок апельсиновый</h3><p>100%, без сахара — 1 литр.</p><div class="price">140 ₽ / л</div><button class="btn-add" data-name="Сок апельсиновый" data-price="140">Добавить</button></div>
-      <div class="card"><span class="icon">🧃</span><h3>Сок яблочный</h3><p>Осветлённый, натуральный — 1 литр.</p><div class="price">120 ₽ / л</div><button class="btn-add" data-name="Сок яблочный" data-price="120">Добавить</button></div>
-      <div class="card"><span class="icon">☕</span><h3>Кофе молотый</h3><p>Арабика, средняя обжарка — 250 г.</p><div class="price">380 ₽ / 250 г</div><button class="btn-add" data-name="Кофе молотый" data-price="380">Добавить</button></div>
-    </div>
-  </section>
-
-</main>
-
-<div class="cart-bar">
-  <div class="info">
-    В корзине: <strong id="cart-count">0</strong> · <strong id="cart-total">0 ₽</strong>
-  </div>
-  <button class="btn-order" id="order-btn" disabled>Оформить заказ</button>
-</div>
-
-<div class="modal-overlay" id="modal">
-  <div class="modal">
-    <h3>🛒 Ваш заказ</h3>
-    <ul id="modal-list"></ul>
-    <div class="total"><span>Итого:</span><span id="modal-total">0 ₽</span></div>
-    <input id="name-input" placeholder="Имя (как к вам обращаться)" />
-    <input id="addr-input" placeholder="Город, улица, дом, квартира" />
-    <div class="modal-buttons">
-      <button class="btn-cancel" id="cancel-btn">Отмена</button>
-      <button class="btn-confirm" id="confirm-btn">Отправить в WhatsApp</button>
-    </div>
-  </div>
-</div>
-
-<footer>Продукты с любовью для мамы ❤️ · 2026</footer>
-
-<script>
-  // ==== НАСТРОЙКИ ====
-  // Твой номер WhatsApp уже вписан:
-  const WA_NUMBER = "79137877310";
-  // ==================
-
-  const cart = {};
-
-  const cartCount = document.getElementById('cart-count');
-  const cartTotal = document.getElementById('cart-total');
-  const orderBtn  = document.getElementById('order-btn');
-  const modal     = document.getElementById('modal');
-  const modalList = document.getElementById('modal-list');
-  const modalTotal= document.getElementById('modal-total');
-
-  // Добавление в корзину
-  document.querySelectorAll('.btn-add').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const name = btn.dataset.name;
-      const price = +btn.dataset.price;
-      if(cart[name]) cart[name].qty++;
-      else cart[name] = { price, qty:1 };
-      btn.textContent = "✓ Добавлено";
-      btn.classList.add('added');
-      setTimeout(()=>{
-        btn.textContent = "Добавить";
-        btn.classList.remove('added');
-      }, 900);
-      render();
-    });
-  });
-
-  // Обновление нижней плашки
-  function render(){
-    let count=0, total=0;
-    Object.values(cart).forEach(i=>{ count+=i.qty; total+=i.qty*i.price; });
-    cartCount.textContent = count;
-    cartTotal.textContent = total.toLocaleString('ru-RU') + ' ₽';
-    orderBtn.disabled = count===0;
-  }
-
-  // Открытие корзины
-  orderBtn.addEventListener('click', ()=>{
-    renderModal();
-    modal.classList.add('open');
-  });
-
-  // Отрисовка корзины с кнопками удаления
-  function renderModal(){
-    modalList.innerHTML = '';
-    let total=0;
-    Object.entries(cart).forEach(([name,item])=>{
-      total += item.price*item.qty;
-      const li = document.createElement('li');
-      li.innerHTML = `<span>${name} × ${item.qty}</span>
-                      <span>
-                        ${(item.price*item.qty).toLocaleString('ru-RU')} ₽ 
-                        <button class="btn-del" data-name="${name}" style="background:none;border:none;color:#d94f70;font-weight:bold;font-size:16px;cursor:pointer;margin-left:10px;" title="Удалить">✕</button>
-                      </span>`;
-      modalList.appendChild(li);
-    });
-    
-    if (Object.keys(cart).length === 0) {
-      modalList.innerHTML = '<li style="justify-content:center;color:#8a7a80;border:none;">Корзина пуста</li>';
-    }
-
-    modalTotal.textContent = total.toLocaleString('ru-RU') + ' ₽';
-    
-    // Вешаем событие клика на все крестики
-    document.querySelectorAll('.btn-del').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const nameToDelete = e.target.getAttribute('data-name');
-        delete cart[nameToDelete];
-        render();
-        renderModal();
-      });
-    });
-  }
-
-  // Закрытие окна
-  document.getElementById('cancel-btn').addEventListener('click', ()=>{
-    modal.classList.remove('open');
-  });
-
-  // Отправка в WhatsApp
-  document.getElementById('confirm-btn').addEventListener('click', ()=>{
-    const name = document.getElementById('name-input').value.trim();
-    const addr = document.getElementById('addr-input').value.trim();
-    if(!name || !addr){
-      alert('Пожалуйста, укажи имя и адрес доставки.');
-      return;
-    }
-    let msg = "🛒 Заказ продуктов%0A";
-    msg += `👤 ${name}%0A📍 ${addr}%0A%0A`;
-    let total = 0;
-    Object.entries(cart).forEach(([n,item])=>{
-      total += item.price*item.qty;
-      msg += `• ${n} × ${item.qty} = ${item.price*item.qty} ₽%0A`;
-    });
-    msg += `%0A💰 Итого: ${total} ₽`;
-    window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
-  });
-</script>
-</body>
-</html>
+      <div class="card"><span class="icon">🫑</
