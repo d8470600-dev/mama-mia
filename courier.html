@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Панель курьера 🚚</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#fdf6f0; --accent:#d94f70; --accent-soft:#fbe3ea; --green:#4caf50; --text:#3a2e33; --muted:#8a7a80; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;padding-bottom:20px;}
+  
+  .header{background:#fff;padding:20px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.05);margin-bottom:20px;position:relative;}
+  .header h1{font-size:20px;color:var(--accent);}
+  .header a{position:absolute;left:20px;top:50%;transform:translateY(-50%);text-decoration:none;color:var(--muted);font-size:20px;}
+
+  .container{max-width:600px;margin:0 auto;padding:0 15px;}
+  
+  .add-box{display:flex;gap:10px;margin-bottom:20px;background:#fff;padding:15px;border-radius:16px;box-shadow:0 4px 12px rgba(217,79,112,.08);}
+  .add-box input{flex:1;padding:10px;border:1px solid #f0dbe2;border-radius:8px;outline:none;font-family:inherit;}
+  .add-box button{background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-weight:600;cursor:pointer;}
+
+  .order-card{background:#fff;border-radius:16px;padding:20px;margin-bottom:15px;box-shadow:0 4px 12px rgba(217,79,112,.08);border-left:5px solid var(--accent);}
+  .order-card.done { border-left-color: var(--green); opacity: 0.8; }
+  .order-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+  .order-header h3{font-size:16px;color:var(--text);}
+  .status{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);}
+  .status.done { background: #e8f5e9; color: var(--green); }
+  
+  .order-details{font-size:14px;color:var(--muted);margin-bottom:15px;}
+  .order-actions{display:flex;gap:10px;}
+  .btn-action{flex:1;padding:10px;border-radius:8px;border:none;font-family:inherit;font-weight:600;cursor:pointer;transition:.2s;}
+  .btn-track{background:var(--accent-soft);color:var(--accent);}
+  .btn-track:hover{background:var(--accent);color:#fff;}
+  .btn-done{background:var(--green);color:#fff;}
+  .btn-done:hover{background:#388e3c;}
+  .btn-del{background:#ffebee;color:#c62828;}
+  .btn-del:hover{background:#c62828;color:#fff;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="index.html">←</a>
+  <h1>Панель курьера 🚚</h1>
+</div>
+
+<div class="container">
+  <div class="add-box">
+    <input type="text" id="new-order" placeholder="Введите имя и адрес клиента...">
+    <button id="add-btn">Добавить</button>
+  </div>
+
+  <div id="orders-list"></div>
+</div>
+
+<script>
+  let orders = JSON.parse(localStorage.getItem('courierOrders')) || [];
+
+  function save() {
+    localStorage.setItem('courierOrders', JSON.stringify(orders));
+  }
+
+  function render() {
+    const list = document.getElementById('orders-list');
+    list.innerHTML = '';
+
+    if (orders.length === 0) {
+      list.innerHTML = '<div style="text-align:center;color:var(--muted);margin-top:30px;">Заказов пока нет. Добавьте первый!</div>';
+      return;
+    }
+
+    orders.forEach((order, index) => {
+      const div = document.createElement('div');
+      div.className = `order-card ${order.done ? 'done' : ''}`;
+      
+      // Генерируем ссылку для трекера
+      const baseUrl = window.location.origin + window.location.pathname.replace('courier.html', 'tracker.html');
+      
+      div.innerHTML = `
+        <div class="order-header">
+          <h3>${order.name}</h3>
+          <span class="status ${order.done ? 'done' : ''}">${order.done ? 'Доставлен' : 'Ожидает'}</span>
+        </div>
+        <div class="order-details">${order.address}</div>
+        <div class="order-actions">
+          <button class="btn-action btn-track" onclick="window.open('${baseUrl}', '_blank')">📍 Трекер</button>
+          ${!order.done ? `<button class="btn-action btn-done" onclick="markDone(${index})">✅ Доставлен</button>` : ''}
+          <button class="btn-action btn-del" onclick="deleteOrder(${index})">✕</button>
+        </div>
+      `;
+      list.appendChild(div);
+    });
+  }
+
+  document.getElementById('add-btn').addEventListener('click', () => {
+    const input = document.getElementById('new-order');
+    const val = input.value.trim();
+    if (!val) return;
+    
+    // Просто разделяем по запятой: первое слово - имя, остальное - адрес
+    const parts = val.split(',');
+    const name = parts[0].trim() || "Клиент";
+    const address = parts.slice(1).join(',').trim() || val;
+
+    orders.push({ name, address, done: false });
+    input.value = '';
+    save();
+    render();
+  });
+
+  window.markDone = (index) => {
+    orders[index].done = true;
+    save();
+    render();
+  };
+
+  window.deleteOrder = (index) => {
+    if (confirm('Удалить заказ?')) {
+      orders.splice(index, 1);
+      save();
+      render();
+    }
+  };
+
+  // Инициализация
+  render();
+</script>
+
+</body>
+</html>
