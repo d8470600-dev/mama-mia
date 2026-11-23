@@ -188,11 +188,11 @@
   .modal h3{color:var(--accent);margin-bottom:16px;font-size:22px;}
   .modal ul{list-style:none;margin-bottom:18px;}
   .modal li{
-    display:flex;justify-content:space-between;
+    display:flex;justify-content:space-between;align-items:center;
     font-size:14px;padding:8px 0;
     border-bottom:1px dashed #f0dbe2;
   }
-  .modal li span:last-child{font-weight:600;color:var(--accent);}
+  .modal li span:last-child{font-weight:600;color:var(--accent); display:flex; align-items:center;}
   .modal .total{
     display:flex;justify-content:space-between;
     font-weight:700;font-size:16px;
@@ -381,7 +381,7 @@
     <ul id="modal-list"></ul>
     <div class="total"><span>Итого:</span><span id="modal-total">0 ₽</span></div>
     <input id="name-input" placeholder="Имя (как к вам обращаться)" />
-    <input id="addr-input" placeholder="Адрес доставки" />
+    <input id="addr-input" placeholder="Город, улица, дом, квартира" />
     <div class="modal-buttons">
       <button class="btn-cancel" id="cancel-btn">Отмена</button>
       <button class="btn-confirm" id="confirm-btn">Отправить в WhatsApp</button>
@@ -393,7 +393,7 @@
 
 <script>
   // ==== НАСТРОЙКИ ====
-  // Замени номер на свой (WhatsApp, формат 79991234567, без +)
+  // Твой номер WhatsApp уже вписан:
   const WA_NUMBER = "79137877310";
   // ==================
 
@@ -406,6 +406,7 @@
   const modalList = document.getElementById('modal-list');
   const modalTotal= document.getElementById('modal-total');
 
+  // Добавление в корзину
   document.querySelectorAll('.btn-add').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const name = btn.dataset.name;
@@ -422,6 +423,7 @@
     });
   });
 
+  // Обновление нижней плашки
   function render(){
     let count=0, total=0;
     Object.values(cart).forEach(i=>{ count+=i.qty; total+=i.qty*i.price; });
@@ -430,23 +432,50 @@
     orderBtn.disabled = count===0;
   }
 
+  // Открытие корзины
   orderBtn.addEventListener('click', ()=>{
+    renderModal();
+    modal.classList.add('open');
+  });
+
+  // Отрисовка корзины с кнопками удаления
+  function renderModal(){
     modalList.innerHTML = '';
     let total=0;
     Object.entries(cart).forEach(([name,item])=>{
       total += item.price*item.qty;
       const li = document.createElement('li');
-      li.innerHTML = `<span>${name} × ${item.qty}</span><span>${(item.price*item.qty).toLocaleString('ru-RU')} ₽</span>`;
+      li.innerHTML = `<span>${name} × ${item.qty}</span>
+                      <span>
+                        ${(item.price*item.qty).toLocaleString('ru-RU')} ₽ 
+                        <button class="btn-del" data-name="${name}" style="background:none;border:none;color:#d94f70;font-weight:bold;font-size:16px;cursor:pointer;margin-left:10px;" title="Удалить">✕</button>
+                      </span>`;
       modalList.appendChild(li);
     });
-    modalTotal.textContent = total.toLocaleString('ru-RU') + ' ₽';
-    modal.classList.add('open');
-  });
+    
+    if (Object.keys(cart).length === 0) {
+      modalList.innerHTML = '<li style="justify-content:center;color:#8a7a80;border:none;">Корзина пуста</li>';
+    }
 
+    modalTotal.textContent = total.toLocaleString('ru-RU') + ' ₽';
+    
+    // Вешаем событие клика на все крестики
+    document.querySelectorAll('.btn-del').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const nameToDelete = e.target.getAttribute('data-name');
+        delete cart[nameToDelete];
+        render();
+        renderModal();
+      });
+    });
+  }
+
+  // Закрытие окна
   document.getElementById('cancel-btn').addEventListener('click', ()=>{
     modal.classList.remove('open');
   });
 
+  // Отправка в WhatsApp
   document.getElementById('confirm-btn').addEventListener('click', ()=>{
     const name = document.getElementById('name-input').value.trim();
     const addr = document.getElementById('addr-input').value.trim();
